@@ -1,0 +1,6 @@
+Original: <Original>, Paraphrase: <Paraphrased>
+[Original]: <Original>, [Paraphrase]: <Paraphrased>
+Original: <Original>, Rewrite: <Paraphrased>
+[Original]: <Original>, [Rewrite]: <Paraphrased>
+Here is the original source: <Original>, Here is the paraphrase: <Paraphrased>
+<Original>, in other words <Paraphrased>
