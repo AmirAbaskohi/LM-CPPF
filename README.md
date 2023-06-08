@@ -24,7 +24,7 @@ In recent years, there has been significant progress in developing pre-trained l
 
 ## Requirements
 
-This repo was tested with Ubuntu 18.04.5 LTS, Python 3.7, PyTorch 1.6.0, and CUDA 10.1. You will need a 48 GB GPU for experiments with RoBERTa-base, and 4x 48 GB GPUs for RoBERTa-large. We run our experiments on Nvidia RTX-A6000 and RTX-8000, but Nvidia A100 with 40 GB should also work.
+This repo was tested with Ubuntu 18.04.5 LTS, Python 3.7, PyTorch 1.6.0, and CUDA 10.1. You will need a 24 GB GPU for experiments with RoBERTa-base. We run our experiments on Nvidia RTX-3090, but Nvidia A100 also works.
 
 ## Download data
 We use pre-processed datasets (SST-2, SST-5, MR, CR, MPQA, Subj, TREC, CoLA, MNLI, SNLI, QNLI, RTE, MRPC, QQP) from  [LM-BFF](https://github.com/princeton-nlp/LM-BFF). LM-BFF offers helpful scripts for downloading and preparing the dataset. Simply run the commands below.
@@ -36,6 +36,39 @@ Then use the following command to generate 16-shot datasets we used in the study
 ```shell
 python tools/generate_k_shot_data.py
 ```
+
+## Paraphrasing prompt-generation
+
+### Prompt Generation
+Navigate to the `few_shot_paraphrasing_data_preparation` directory.
+
+Run the prompt_generator.py file to generate prompts required for the language models. Use the following command:
+
+```shell
+python prompt_generator.py [demonstration_template_number] [task_name] [OPTIONAL:instruction_template_number]
+```
+Replace `[demonstration_template_number]` with the desired template number, `[task_name]` with the task name, and `[OPTIONAL:instruction_template_number]` with the optional instruction template number. The last parameter is optional.
+
+### Paraphrasing
+
+After generating the prompts, you can run the specific code for paraphrasing by selecting one of the available files listed below:
+
+* `paraphrase_with_gpt3.py`
+* `paraphrase_with_gpt2_ft.py`
+* `paraphrase_with_gpt2.py`
+
+
+<b>Note</b>: Please be aware that the usage of the ALPA meta OPT-175B model, which was available during the preparation of this paper, is no longer supported. Our experiments were conducted using the ALPA system with the bot we created. Kindly note that the current code does not include access to the ALPA meta OPT-175B model.
+
+To run the code use the following command:
+
+```shell
+python paraphrase_file.py [paraphrasing_file] [task_name]
+```
+
+Replace `paraphrasing_file.py` with the name of one of the three files mentioned above, and `[task_name]` with the desired task name.
+
+Once the paraphrase file is executed, you can proceed with prompt-based fine-tuning which the instruction are in the next part.
 
 ## Running our fine-tuning
 The primary prompts (templates) used for tasks have been pre-defined in ```run_experiments.sh```. The auxiliary templates used when generating multi-views of inputs for contrastive learning can be found in ```/auto_template/$TASK```.
