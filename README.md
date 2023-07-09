@@ -150,12 +150,19 @@ Thanks to [LM-BFF](https://github.com/princeton-nlp/LM-BFF) and [SupCon](https:/
 ## Citation
 If you found this work useful, please consider citing our paper:
 ```bibtex
-@misc{abaskohi2023lmcppf,
-      title={LM-CPPF: Paraphrasing-Guided Data Augmentation for Contrastive Prompt-Based Few-Shot Fine-Tuning}, 
-      author={Amirhossein Abaskohi and Sascha Rothe and Yadollah Yaghoobzadeh},
-      year={2023},
-      eprint={2305.18169},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+@inproceedings{abaskohi-etal-2023-lm,
+    title = "{LM}-{CPPF}: Paraphrasing-Guided Data Augmentation for Contrastive Prompt-Based Few-Shot Fine-Tuning",
+    author = "Abaskohi, Amirhossein  and
+      Rothe, Sascha  and
+      Yaghoobzadeh, Yadollah",
+    booktitle = "Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 2: Short Papers)",
+    month = jul,
+    year = "2023",
+    address = "Toronto, Canada",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.acl-short.59",
+    pages = "670--681",
+    abstract = "In recent years, there has been significant progress in developing pre-trained language models for NLP. However, these models often struggle when fine-tuned on small datasets. To address this issue, researchers have proposed various adaptation approaches. Prompt-based tuning is arguably the most common way, especially for larger models. Previous research shows that adding contrastive learning to prompt-based fine-tuning is effective as it helps the model generate embeddings that are more distinguishable between classes, and it can also be more sample-efficient as the model learns from positive and negative examples simultaneously. One of the most important components of contrastive learning is data augmentation, but unlike computer vision, effective data augmentation for NLP is still challenging. This paper proposes LM-CPPF, Contrastive Paraphrasing-guided Prompt-based Fine-tuning of Language Models, which leverages prompt-based few-shot paraphrasing using generative language models, especially large language models such as GPT-3 and OPT-175B, for data augmentation. Our experiments on multiple text classification benchmarks show that this augmentation method outperforms other methods, such as easy data augmentation, back translation, and multiple templates.",
 }
+
 ```
