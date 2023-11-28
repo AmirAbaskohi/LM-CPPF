@@ -38,6 +38,9 @@ for index, row in task_data.iterrows():
     prompt += "\n"
 
     for sample_index, sample_row in samples.iterrows():
+        # Note: The following code is designed to collect user-inputted paraphrased samples due to the unavailability of shared data from QuillBot.
+        # If deploying on a larger scale, consider automating this process, such as connecting to QuillBot or using an alternative model, to avoid manual input each time.
+        # Please customize this section accordingly for your specific requirements.
         paraphrased = input(f"Paraphrase this: {sample_row['text']}")
         demonstration_template_copy = copy.copy(demonstration_template)
         demonstration_template_copy.replace("<Original>", sample_row['text'])
